@@ -22,9 +22,7 @@ public class UnitTest1
         //assert
         Assert.AreEqual(expected, actual);
     }
-
-    [TestMethod]
-    [DataRow (null,"happy")]
+    [DataRow("happy", null)]
     public void Given_NullMessage_Should_Return_UserMood(string message, string expected)
     {
         //arrange
@@ -35,8 +33,52 @@ public class UnitTest1
 
         //act
         string actual = mood.AnalyseMood();
-
         //assert
         Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    [DataRow (null, "Message is null")]
+    public void Given_CustomNullMessage_Should_Return_UserMood(string message, string expected)
+    {
+        //str
+        try
+        {
+            //arrange
+            //message = " I am in happy mood";
+            //expected = "happy";
+
+            MoodAnalyser mood = new MoodAnalyser(message);
+
+            //act
+            string actual = mood.AnalyseMood();
+        }
+        catch (CustomMoodAnalyserException ex)
+        {
+            //assert
+            Assert.AreEqual(expected, ex.Message);
+        }
+    }
+    [TestMethod]
+    [DataRow("", "Message is empty")]
+    public void Given_CustomEmptyMessage_Should_Return_UserMood(string message, string expected)
+    {
+        //str
+        try
+        {
+            //arrange
+            //message = " I am in happy mood";
+            //expected = "happy";
+
+            MoodAnalyser mood = new MoodAnalyser(message);
+
+            //act
+            string actual = mood.AnalyseMood();
+        }
+        catch (CustomMoodAnalyserException ex)
+        {
+            //assert
+            Assert.AreEqual(expected, ex.Message);
+        }
     }
 }
