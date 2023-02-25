@@ -4,6 +4,7 @@ namespace MoodAnalyserProject
 	public class MoodAnalyser
 	{
 		public string message;
+
 		public MoodAnalyser(string message)
 		{
 			this.message = message;
@@ -17,6 +18,10 @@ namespace MoodAnalyserProject
                 {
                     return "happy";
                 }
+				else if (message.Equals(string.Empty))
+				{
+					throw new CustomMoodAnalyserException("Message is empty", CustomMoodAnalyserException.ExceptionTypes.EMPTY_MOOD);
+				}
 				else
 				{
 					return "sad";
@@ -25,7 +30,8 @@ namespace MoodAnalyserProject
 			catch(NullReferenceException ex)
 			{
 				Console.WriteLine(ex.Message);
-				return "happy";
+
+				throw new CustomMoodAnalyserException("Message is null", CustomMoodAnalyserException.ExceptionTypes.NULL_MOOD);
 			}
 		}
 	}
