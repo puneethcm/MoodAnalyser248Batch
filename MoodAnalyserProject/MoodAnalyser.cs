@@ -14,10 +14,10 @@ namespace MoodAnalyserProject
 		{
 			try
 			{
-                if (message.ToLower().Contains("happy"))
-                {
-                    return "happy";
-                }
+                		if (message.ToLower().Contains("happy"))
+                		{
+                    			return "happy";
+                		}
 				else if (message.Equals(string.Empty))
 				{
 					throw new CustomMoodAnalyserException("Message is empty", CustomMoodAnalyserException.ExceptionTypes.EMPTY_MOOD);
