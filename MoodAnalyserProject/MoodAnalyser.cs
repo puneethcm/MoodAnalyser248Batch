@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 namespace MoodAnalyserProject
 {
 	public class MoodAnalyser
@@ -14,18 +14,18 @@ namespace MoodAnalyserProject
 		{
 			try
 			{
-                		if (message.ToLower().Contains("happy"))
-                		{
-                    			return "happy";
-                		}
-				else if (message.Equals(string.Empty))
-				{
-					throw new CustomMoodAnalyserException("Message is empty", CustomMoodAnalyserException.ExceptionTypes.EMPTY_MOOD);
-				}
-				else
-				{
-					return "sad";
-				}
+                if (message.ToLower().Contains("happy"))
+                {
+                    return "happy";
+                }
+				        else if (message.Equals(string.Empty))
+				        {
+					          throw new CustomMoodAnalyserException("Message is empty", CustomMoodAnalyserException.ExceptionTypes.EMPTY_MOOD);
+				        } 
+				        else
+				        {
+					          return "sad";
+				        }
 			}
 			catch(NullReferenceException ex)
 			{
