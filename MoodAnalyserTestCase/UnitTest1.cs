@@ -20,6 +20,23 @@ public class UnitTest1
         string actual = mood.AnalyseMood();
 
         //assert
-        Assert.AreEqual(expected,actual);
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    [DataRow (null,"happy")]
+    public void Given_NullMessage_Should_Return_UserMood(string message, string expected)
+    {
+        //arrange
+        //message = " I am in happy mood";
+        //expected = "happy";
+
+        MoodAnalyser mood = new MoodAnalyser(message);
+
+        //act
+        string actual = mood.AnalyseMood();
+
+        //assert
+        Assert.AreEqual(expected, actual);
     }
 }

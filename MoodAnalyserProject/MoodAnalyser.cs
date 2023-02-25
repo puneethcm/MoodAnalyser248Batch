@@ -11,16 +11,22 @@ namespace MoodAnalyserProject
 
 		public string AnalyseMood()
 		{
-			if (message.ToLower().Contains("happy"))
+			try
 			{
-				return "happy";
-				Console.WriteLine("happy");
+                if (message.ToLower().Contains("happy"))
+                {
+                    return "happy";
+                }
+				else
+				{
+					return "sad";
+				}
 			}
-			else
+			catch(NullReferenceException ex)
 			{
-				return "sad";
-                Console.WriteLine("sad");
-            }
+				Console.WriteLine(ex.Message);
+				return "happy";
+			}
 		}
 	}
 }
