@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 namespace MoodAnalyserProject
 {
 	public class MoodAnalyser
@@ -13,10 +13,10 @@ namespace MoodAnalyserProject
 		{
 			try
 			{
-                if (message.ToLower().Contains("happy"))
-                {
-                    return "happy";
-                }
+                		if (message.ToLower().Contains("happy"))
+                		{
+                    			return "happy";
+                		}
 				else
 				{
 					return "sad";
