@@ -1,4 +1,5 @@
 ﻿using MoodAnalyserProject;
+using Newtonsoft.Json.Linq;
 
 namespace MoodAnalyserTestCase;
 
@@ -92,27 +93,34 @@ public class UnitTest1
     }
 
     [TestMethod]
-    public void Improper_ClassName_Should_Return_Exception()
+    [DataRow("MoodAnalyserProject.MoodAnalyser1", "MoodAnalyser")]
+    public void Improper_ClassName_Should_Return_Exception(string className, string constructor)
     {
-        string expected = "Class Not Found";
+        string expectedMsg = "Class Not Found";
         try
         {
-            object actual = MoodAnalyserFactory.CreateMoodAnalyse("MoodAnalyserProject.MoodAnalyser", "MoodAnalyser");
+            Object expected = new Object();
+            object actual = MoodAnalyserFactory.CreateMoodAnalyse(className, constructor);
+            actual.Equals(expected);
 
         }
         catch (MoodAnalyserException exception)
         {
-            Assert.AreEqual(expected, exception.Message);
+            Assert.AreEqual(expectedMsg, exception.Message);
         }
     }
     [TestMethod]
-    public void Improper_ConstructorName_Should_Return_Exception()
+    [DataRow("MoodAnalyserProject.MoodAnalyser", "MoodAnalyser")]
+    [DataRow("MoodAnalyserProject.MoodAnalyser", "customer")]
+    public void Improper_ConstructorName_Should_Return_Exception(string className, string constructor)
     {
 
         string expectedMsg = "Constructor is Not Found";
         try
         {
-            object actual = MoodAnalyserFactory.CreateMoodAnalyse("MoodAnalyserProject.MoodAnalyser", "MoodAnalyser");
+            Object expected = new Object();
+            object actual = MoodAnalyserFactory.CreateMoodAnalyseObject(className,constructor);
+            actual.Equals(expected);
 
         }
         catch (MoodAnalyserException ex)
