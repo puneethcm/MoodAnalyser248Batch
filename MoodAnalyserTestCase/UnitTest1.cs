@@ -81,4 +81,43 @@ public class UnitTest1
             Assert.AreEqual(expected, ex.Message);
         }
     }
+
+    [TestMethod]
+    [TestCategory("Reflection")]
+    public void Given_Mood_Analyse_Class_Should_Return_Object()
+    { 
+        Object expected = new Object();
+        object actual = MoodAnalyserFactory.CreateMoodAnalyse("MoodAnalyserProject.MoodAnalyser", "MoodAnalyser");
+        actual.Equals(expected);
+    }
+
+    [TestMethod]
+    public void Improper_ClassName_Should_Return_Exception()
+    {
+        string expected = "Class Not Found";
+        try
+        {
+            object actual = MoodAnalyserFactory.CreateMoodAnalyse("MoodAnalyserProject.MoodAnalyser", "MoodAnalyser");
+
+        }
+        catch (MoodAnalyserException exception)
+        {
+            Assert.AreEqual(expected, exception.Message);
+        }
+    }
+    [TestMethod]
+    public void Improper_ConstructorName_Should_Return_Exception()
+    {
+
+        string expectedMsg = "Constructor is Not Found";
+        try
+        {
+            object actual = MoodAnalyserFactory.CreateMoodAnalyse("MoodAnalyserProject.MoodAnalyser", "MoodAnalyser");
+
+        }
+        catch (MoodAnalyserException ex)
+        {
+            Assert.AreEqual(expectedMsg, ex.Message);
+        }
+    }
 }
